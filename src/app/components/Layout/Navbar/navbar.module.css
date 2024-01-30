@@ -1,0 +1,15 @@
+.logo {
+  @apply p-4;
+}
+.liElement {
+  @apply p-2;
+}
+.liElement svg {
+  @apply w-5 h-5;
+}
+.liElement a {
+  @apply flex items-center justify-center;
+}
+.spanIconElement {
+  @apply p-2 transition-all rounded-md text-white fill-white relative hover:bg-white/50;
+}
