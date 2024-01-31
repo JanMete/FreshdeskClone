@@ -5,7 +5,7 @@ import styles from './navbar.module.css';
 
 export default function Navbar() {
   return (
-    <nav className='h-screen bg-[#1e3e58]'>
+    <nav className='min-w-16 h-screen bg-[#1e3e58]'>
       <ul className='flex flex-col gap-1 '>
         <li className={`${styles.logo} bg-[#183247] `}>
           <Link href={'/'}>

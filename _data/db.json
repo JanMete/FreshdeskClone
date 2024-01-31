@@ -7,7 +7,7 @@
       "priority": "low",
       "status": "open",
       "user": "John",
-      "user_email": "john@gmail.com",
+      "user_email": "John@gmail.com",
       "agent": "unassigned"
     },
     {
@@ -15,9 +15,9 @@
       "title": "Fix keyboard",
       "body": "Lorem ipsum Triforce sit amet, Linkus Hyruleus tempus Ganondorf. Nunc ocarina sagittis quis Majoras Mask. Nulla in metus arcu. Suspendisse potenti. In vel mauris varius, consectetur Zora ipsum eget, Master Sword porttitor urna. Fusce elementum urna elit, eget eleifend velit consectetur eget. Integer vel lobortis ipsum, vitae auctor Ocarina of Time. Donec sed urna dapibus, interdum magna a, eleifend magna. Curabitur tincidunt enim a neque volutpat. Phasellus auctor magna vel nunc pretium, ut volutpat justo tristique. Pellentesque cursus convallis mauris, in tempus enim tincidunt vitae.",
       "priority": "medium",
-      "status": "open",
+      "status": "resolved",
       "user": "Max",
-      "user_email": "max@gmail.com",
+      "user_email": "Max@gmail.com",
       "agent": "unassigned"
     },
     {
@@ -25,7 +25,7 @@
       "title": "Fix PC",
       "body": "Lorem ipsum Triforce sit amet, Linkus Hyruleus tempus Ganondorf. Nunc ocarina sagittis quis Majoras Mask. Nulla in metus arcu. Suspendisse potenti. In vel mauris varius, consectetur Zora ipsum eget, Master Sword porttitor urna. Fusce elementum urna elit, eget eleifend velit consectetur eget. Integer vel lobortis ipsum, vitae auctor Ocarina of Time. Donec sed urna dapibus, interdum magna a, eleifend magna. Curabitur tincidunt enim a neque volutpat. Phasellus auctor magna vel nunc pretium, ut volutpat justo tristique. Pellentesque cursus convallis mauris, in tempus enim tincidunt vitae.",
       "priority": "high",
-      "status": "peding",
+      "status": "pending",
       "user": "Danny",
       "user_email": "Danny",
       "agent": "unassigned"
@@ -35,9 +35,9 @@
       "title": "Download adobe reader",
       "body": "Lorem ipsum Triforce sit amet, Linkus Hyruleus tempus Ganondorf. Nunc ocarina sagittis quis Majoras Mask. Nulla in metus arcu. Suspendisse potenti. In vel mauris varius, consectetur Zora ipsum eget, Master Sword porttitor urna. Fusce elementum urna elit, eget eleifend velit consectetur eget. Integer vel lobortis ipsum, vitae auctor Ocarina of Time. Donec sed urna dapibus, interdum magna a, eleifend magna. Curabitur tincidunt enim a neque volutpat. Phasellus auctor magna vel nunc pretium, ut volutpat justo tristique. Pellentesque cursus convallis mauris, in tempus enim tincidunt vitae.",
       "priority": "urgent",
-      "status": "Waiting for customer response",
+      "status": "waiting for customer response",
       "user": "Michael",
-      "user_email": "michael@gmail.com",
+      "user_email": "Michael@gmail.com",
       "agent": "unassigned"
     }
   ]

@@ -1,0 +1,9 @@
+.inputContainer {
+  @apply flex flex-col w-full;
+}
+.inputContainer select {
+  @apply py-2;
+}
+.inputContainer input {
+  @apply py-2;
+}

@@ -1,0 +1,9 @@
+.selectContainer {
+  @apply my-5 flex flex-col;
+}
+.selectContainer label {
+  @apply my-1;
+}
+.selectContainer select {
+  @apply border-2 rounded-md;
+}
