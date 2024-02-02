@@ -1,9 +1,14 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import styles from './navbar.module.css';
+import { usePathname } from 'next/navigation';
 
 export default function Navbar() {
+  const pathname = usePathname();
+
   return (
     <nav className='min-w-16 h-screen bg-[#1e3e58]'>
       <ul className='flex flex-col gap-1 '>
@@ -19,7 +24,11 @@ export default function Navbar() {
         </li>
         <li className={`${styles.liElement}`}>
           <Link href={'/'}>
-            <span className={`${styles.spanIconElement}`}>
+            <span
+              className={`${styles.spanIconElement} ${
+                pathname === '/' ? styles.active : ''
+              }`}
+            >
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 width='32'
@@ -34,7 +43,11 @@ export default function Navbar() {
         </li>
         <li className={`${styles.liElement}`}>
           <Link href={'/tickets'}>
-            <span className={`${styles.spanIconElement}`}>
+            <span
+              className={`${styles.spanIconElement} ${
+                pathname.includes('/tickets') ? styles.active : ''
+              }`}
+            >
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 width='32'

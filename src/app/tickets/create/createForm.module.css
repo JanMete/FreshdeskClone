@@ -1,9 +1,15 @@
 .inputContainer {
-  @apply flex flex-col w-full;
+  @apply flex flex-col w-full gap-1;
+}
+.inputContainer label {
+  @apply text-xs;
 }
 .inputContainer select {
-  @apply py-2;
+  @apply py-1 px-2;
 }
 .inputContainer input {
-  @apply py-2;
+  @apply py-1 px-2;
+}
+.inputContainer textarea {
+  @apply py-1 px-2 resize-none;
 }

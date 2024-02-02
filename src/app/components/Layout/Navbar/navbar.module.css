@@ -13,3 +13,6 @@
 .spanIconElement {
   @apply p-2 transition-all rounded-md text-white fill-white relative hover:bg-white/50;
 }
+.active {
+  @apply bg-white/50;
+}

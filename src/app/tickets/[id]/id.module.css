@@ -5,5 +5,5 @@
   @apply my-1;
 }
 .selectContainer select {
-  @apply border-2 rounded-md;
+  @apply border-2 rounded-md py-1 px-2;
 }

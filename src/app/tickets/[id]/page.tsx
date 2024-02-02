@@ -1,4 +1,4 @@
-import { TicketType } from '@/app/types/types';
+import { TicketType } from '@/app/lib/types/types';
 import styles from './id.module.css';
 import { notFound } from 'next/navigation';
 
@@ -19,7 +19,6 @@ export async function generateStaticParams() {
 }
 
 async function getTicket(id: string) {
-  await new Promise((resolve) => setTimeout(resolve, 3000));
   const res = await fetch(`http://localhost:4000/tickets/${id}`, {
     next: {
       revalidate: 60,
@@ -112,6 +111,9 @@ export default async function TicketDetails({ params }: TicketDetailsProps) {
             <option value='unassigned'>Unassigned</option>
           </select>
         </div>
+        <button className='w-full py-1 px-2 rounded-md text-white bg-gradientBtn hover:bg-gradientHoverBtn'>
+          Apply
+        </button>
       </section>
     </main>
   );
