@@ -1,0 +1,9 @@
+.inputContainer {
+  @apply flex flex-col w-full gap-1;
+}
+.inputContainer label {
+  @apply text-xs;
+}
+.inputContainer input {
+  @apply py-1 px-2;
+}

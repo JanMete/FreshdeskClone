@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { TicketType } from '../lib/types/types';
+import { TicketType } from '../../lib/types/types';
 
 async function getTickets() {
   const res = await fetch('http://localhost:4000/tickets', {
@@ -7,6 +7,7 @@ async function getTickets() {
       revalidate: 0,
     },
   });
+
   return res.json();
 }
 

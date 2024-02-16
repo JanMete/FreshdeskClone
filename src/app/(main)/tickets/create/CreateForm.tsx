@@ -3,7 +3,7 @@
 import React from 'react';
 import styles from './createForm.module.css';
 import Link from 'next/link';
-import { FieldValues, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import {
@@ -19,60 +19,23 @@ export default function CreateForm() {
     handleSubmit,
     formState: { errors, isSubmitting },
     reset,
-    setError,
   } = useForm<TCreateTicketSchema>({
     resolver: zodResolver(createTicketSchema),
   });
 
   const onSubmit = async (data: TCreateTicketSchema) => {
-    console.log(data);
+    const res = fetch('http://localhost:4000/tickets', {
+      method: 'POST',
+      headers: { 'Content-Type': 'Application/json' },
+      body: JSON.stringify(data),
+    });
 
-    // const res = fetch('http://localhost:4000/tickets', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'Application/json' },
-    //   body: JSON.stringify(data),
-    // });
-
-    // if ((await res).status === 201) {
-    //   router.refresh();
-    //   router.push('/tickets');
-    // }
+    if ((await res).status === 201) {
+      router.push('/tickets');
+      router.refresh();
+    }
 
     reset();
-
-    // const response = await fetch('/apki/createticket', {
-    //   method: 'POST',
-    //   body: JSON.stringify(data),
-    //   headers: { 'Content-Type': 'application/json' },
-    // });
-
-    // const responseData = await response.json();
-    // if (!response.ok) {
-    //   alert('Submitting ticket failed!');
-    //   return;
-    // }
-
-    // if (responseData.errors) {
-    //   const errors = responseData.errors;
-    //   if (errors.title) {
-    //     setError('title', {
-    //       type: 'server',
-    //       message: errors.title,
-    //     });
-    //   } else if (errors.priority) {
-    //     setError('priority', {
-    //       type: 'server',
-    //       message: errors.priority,
-    //     });
-    //   } else if (errors.body) {
-    //     setError('body', {
-    //       type: 'server',
-    //       message: errors.body,
-    //     });
-    //   } else {
-    //     alert('Something went wrong!');
-    //   }
-    // }
   };
 
   return (
@@ -107,19 +70,6 @@ export default function CreateForm() {
             <p className='text-red-500 text-sm'>{`${errors.body.message}`}</p>
           )}
         </div>
-        {/* HIDDEN */}
-        <input type='hidden' defaultValue={'open'} {...register('status')} />
-        <input type='hidden' defaultValue={'unknown'} {...register('user')} />
-        <input
-          type='hidden'
-          defaultValue={'unknown@gmail.com'}
-          {...register('user_email')}
-        />
-        <input
-          type='hidden'
-          defaultValue={'unassigned'}
-          {...register('agent')}
-        />
         {/* BUTTONS */}
         <div className='flex justify-end gap-4'>
           <Link href={'/tickets'}>

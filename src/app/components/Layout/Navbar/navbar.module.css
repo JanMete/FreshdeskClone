@@ -2,7 +2,7 @@
   @apply p-4;
 }
 .liElement {
-  @apply p-2;
+  @apply p-2 max-w-fit;
 }
 .liElement svg {
   @apply w-5 h-5;

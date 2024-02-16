@@ -10,8 +10,8 @@ export default function Navbar() {
   const pathname = usePathname();
 
   return (
-    <nav className='min-w-16 h-screen bg-[#1e3e58]'>
-      <ul className='flex flex-col gap-1 '>
+    <nav className='min-w-16 h-screen bg-[#1e3e58] flex content-center'>
+      <ul className='flex flex-col gap-1 items-center'>
         <li className={`${styles.logo} bg-[#183247] `}>
           <Link href={'/'}>
             <Image

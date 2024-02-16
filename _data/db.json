@@ -39,16 +39,6 @@
       "user": "Michael",
       "user_email": "Michael@gmail.com",
       "agent": "unassigned"
-    },
-    {
-      "id": "3998",
-      "title": "adsadsd",
-      "priority": "low",
-      "body": "asdasdasdasd",
-      "status": "open",
-      "user": "unknown",
-      "user_email": "unknown@gmail.com",
-      "agent": "unassigned"
     }
   ]
 }

@@ -8,6 +8,16 @@ type TicketDetailsProps = {
   };
 };
 
+export async function generateMetadata({ params }: TicketDetailsProps) {
+  const id = params.id;
+  const res = await fetch(`http://localhost:4000/tickets/${id}`);
+  const ticket = await res.json();
+
+  return {
+    title: `Freshdesk | ${ticket.title}`,
+  };
+}
+
 export async function generateStaticParams() {
   const res = await fetch('http://localhost:4000/tickets');
 
