@@ -20,7 +20,7 @@ export default function LogIn() {
 
   const onSubmit = async (data: TLogInSchema) => {
     setFormError('');
-    const supabase = createClientComponentClient();
+    const supabase = createClientComponentClient<Database>();
     const { error } = await supabase.auth.signInWithPassword({
       email: data.user_email,
       password: data.password,

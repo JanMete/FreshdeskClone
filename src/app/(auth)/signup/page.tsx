@@ -19,7 +19,7 @@ export default function SignUp() {
   const router = useRouter();
 
   const onSubmit = async (data: TSignUpSchema) => {
-    const supabase = createClientComponentClient();
+    const supabase = createClientComponentClient<Database>();
     const { error } = await supabase.auth.signUp({
       email: data.user_email,
       password: data.password,
@@ -31,6 +31,17 @@ export default function SignUp() {
       setFormError(error.message);
     }
     if (!error) {
+      const res = await fetch('http://localhost:3000/api/auth/users', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data.user_email),
+      });
+
+      const json = await res.json();
+
+      if (json.error) {
+        console.log(json.error);
+      }
       router.push('/verify');
     }
   };

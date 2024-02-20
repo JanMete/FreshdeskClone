@@ -7,7 +7,7 @@ export default function LogoutButton() {
   const router = useRouter();
 
   const handleLogout = async () => {
-    const supabase = createClientComponentClient();
+    const supabase = createClientComponentClient<Database>();
     const { error } = await supabase.auth.signOut();
 
     if (!error) {

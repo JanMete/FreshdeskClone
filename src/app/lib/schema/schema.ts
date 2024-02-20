@@ -14,7 +14,6 @@ export type TCreateTicketSchema = z.infer<typeof createTicketSchema>;
 
 export const singnUpSchema = z
   .object({
-    // user: z.string().min(3, 'Username must be at least 3 characters long.'),
     user_email: z.string().email(),
     password: z.string().min(8, 'Password must be at least 8 characters long.'),
     confirm_password: z.string(),
@@ -32,3 +31,10 @@ export const logInSchema = z.object({
 });
 
 export type TLogInSchema = z.infer<typeof logInSchema>;
+
+export const updateTicket = z.object({
+  status: z.string(),
+  priority: z.string(),
+  agent: z.string(),
+});
+export type TUpdateTicket = z.infer<typeof updateTicket>;

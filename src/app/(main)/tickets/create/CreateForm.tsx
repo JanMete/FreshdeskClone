@@ -24,13 +24,18 @@ export default function CreateForm() {
   });
 
   const onSubmit = async (data: TCreateTicketSchema) => {
-    const res = fetch('http://localhost:4000/tickets', {
+    const res = await fetch('http://localhost:3000/api/tickets', {
       method: 'POST',
-      headers: { 'Content-Type': 'Application/json' },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
     });
 
-    if ((await res).status === 201) {
+    const json = await res.json();
+
+    if (json.error) {
+      console.log(json.error);
+    }
+    if (json.data) {
       router.push('/tickets');
       router.refresh();
     }

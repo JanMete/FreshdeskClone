@@ -1,6 +1,7 @@
-import { TicketType } from '@/app/lib/types/types';
-import styles from './id.module.css';
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { notFound } from 'next/navigation';
+import { cookies } from 'next/headers';
+import TicketRightContainer from './TicketRightContainer';
 
 type TicketDetailsProps = {
   params: {
@@ -9,48 +10,41 @@ type TicketDetailsProps = {
 };
 
 export async function generateMetadata({ params }: TicketDetailsProps) {
-  const id = params.id;
-  const res = await fetch(`http://localhost:4000/tickets/${id}`);
-  const ticket = await res.json();
+  const supabase = createServerComponentClient<Database>({ cookies });
+  const { data: ticket } = await supabase
+    .from('Tickets')
+    .select()
+    .eq('id', params.id)
+    .single();
 
   return {
-    title: `Freshdesk | ${ticket.title}`,
+    title: `Freshdesk | ${ticket?.title || 'Ticket not found'}`,
   };
 }
 
-export async function generateStaticParams() {
-  const res = await fetch('http://localhost:4000/tickets');
-
-  const tickets = await res.json();
-
-  return tickets.map((ticket: TicketType) => ({
-    id: ticket.id,
-  }));
-}
-
 async function getTicket(id: string) {
-  const res = await fetch(`http://localhost:4000/tickets/${id}`, {
-    next: {
-      revalidate: 60,
-    },
-  });
+  const supabase = createServerComponentClient<Database>({ cookies });
+  const { data } = await supabase
+    .from('Tickets')
+    .select()
+    .eq('id', id)
+    .single();
 
-  if (!res.ok) {
+  if (!data) {
     notFound();
   }
-  return res.json();
-}
 
-function capitalizeFirstLetter(word: string) {
-  return word.charAt(0).toUpperCase() + word.slice(1);
+  return data;
 }
 
 export default async function TicketDetails({ params }: TicketDetailsProps) {
   const id = params.id;
-  const ticket = await getTicket(id);
+  const ticket: ticket = await getTicket(id);
+
   return (
     <main className='flex grow'>
       {/* LEFT SECTION */}
+
       <section className='w-4/5 px-10 pt-5 flex flex-col gap-5'>
         {/* TITLE */}
         <div className='flex items-center gap-5'>
@@ -71,9 +65,9 @@ export default async function TicketDetails({ params }: TicketDetailsProps) {
           <div
             className={`min-w-9 min-h-9 flex justify-center items-center rounded-lg opacity-50 bg-yellow-200`}
           >
-            {ticket.user.slice(0, 1).toUpperCase()}
+            {ticket.user_email!.slice(0, 1).toUpperCase()}
           </div>
-          <h3>{ticket.user}</h3>
+          <h3>{ticket.user_email}</h3>
         </div>
         {/* BOTTOM */}
         <div className='flex items-start gap-5'>
@@ -91,40 +85,7 @@ export default async function TicketDetails({ params }: TicketDetailsProps) {
         </div>
       </section>
       {/* RIGHT SECTION */}
-      <section className='w-1/5 m-5 p-8 bg-white shadow-sm'>
-        <p>{capitalizeFirstLetter(ticket.status)}</p>
-        <hr className='my-3' />
-        <p className='text-xs'>PROPERTIES</p>
-        <div className={styles.selectContainer}>
-          <label>Status</label>
-          <select defaultValue={ticket.status} name='status'>
-            <option value='open'>Open</option>
-            <option value='pending'>Pending</option>
-            <option value='resolved'>Resolved</option>
-            <option value='waiting for customer response'>
-              Waiting for customer response
-            </option>
-          </select>
-        </div>
-        <div className={styles.selectContainer}>
-          <label>Priority</label>
-          <select defaultValue={ticket.priority} name='priority'>
-            <option value='low'>Low</option>
-            <option value='medium'>Medium</option>
-            <option value='high'>High</option>
-            <option value='urgent'>Urgent</option>
-          </select>
-        </div>
-        <div className={styles.selectContainer}>
-          <label>Agent</label>
-          <select defaultValue={ticket.agent} name='agent'>
-            <option value='unassigned'>Unassigned</option>
-          </select>
-        </div>
-        <button className='w-full py-1 px-2 rounded-md text-white bg-gradientBtn hover:bg-gradientHoverBtn'>
-          Apply
-        </button>
-      </section>
+      <TicketRightContainer id={id} ticket={ticket} />
     </main>
   );
 }

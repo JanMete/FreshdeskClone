@@ -6,7 +6,7 @@ import LogoutButton from './LogoutButton';
 import { redirect } from 'next/navigation';
 
 export default async function TopBar() {
-  const superbase = createServerComponentClient({ cookies });
+  const superbase = createServerComponentClient<Database>({ cookies });
   const { data } = await superbase.auth.getSession();
 
   if (!data.session) {
