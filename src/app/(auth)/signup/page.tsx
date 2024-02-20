@@ -24,7 +24,7 @@ export default function SignUp() {
       email: data.user_email,
       password: data.password,
       options: {
-        emailRedirectTo: `${location.origin}/api/auth/callback`,
+        emailRedirectTo: `${window.location.origin}/api/auth/callback`,
       },
     });
     if (error) {
