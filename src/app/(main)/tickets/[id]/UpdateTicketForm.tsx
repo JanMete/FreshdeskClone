@@ -22,7 +22,7 @@ export default function UpdateTicketForm({
 
   const onSubmit = async (data: TUpdateTicket) => {
     setIsFormChanged(false);
-    const res = await fetch(`http://localhost:3000/api/tickets/${id}`, {
+    const res = await fetch(`${location.origin}/api/tickets/${id}`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),

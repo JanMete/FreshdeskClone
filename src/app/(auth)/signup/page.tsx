@@ -31,7 +31,7 @@ export default function SignUp() {
       setFormError(error.message);
     }
     if (!error) {
-      const res = await fetch('http://localhost:3000/api/auth/users', {
+      const res = await fetch(`${location.origin}/api/auth/users`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data.user_email),
