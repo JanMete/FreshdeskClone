@@ -25,7 +25,7 @@ export default async function Home() {
   const userTickets = (await getUserTickets()) ?? [];
 
   return (
-    <main className='p-3 flex flex-col gap-2 grow items-center justify-center'>
+    <main className='p-3 flex flex-col gap-2'>
       {userTickets.length > 0 ? (
         userTickets.map((ticket) => <Ticket key={ticket.id} ticket={ticket} />)
       ) : (
