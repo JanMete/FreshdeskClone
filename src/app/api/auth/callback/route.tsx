@@ -16,5 +16,5 @@ export async function GET(request: NextRequest) {
     await supabase.auth.exchangeCodeForSession(code);
   }
 
-  return NextResponse.redirect(url.origin);
+  return NextResponse.redirect('https://freshdesk-clone.vercel.app/login');
 }
