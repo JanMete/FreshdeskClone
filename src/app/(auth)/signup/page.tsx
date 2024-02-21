@@ -24,7 +24,7 @@ export default function SignUp() {
       email: data.user_email,
       password: data.password,
       options: {
-        emailRedirectTo: `https://freshdesk-clone.vercel.app/login`,
+        emailRedirectTo: `${location.origin}/api/auth/callback`,
       },
     });
     if (error) {
