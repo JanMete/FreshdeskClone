@@ -90,7 +90,7 @@ export default function SignUp() {
             disabled={isSubmitting}
             className='px-4 py-1 bg-gradientBtn hover:bg-gradientHoverBtn text-white rounded-md disabled:bg-disabledGradientBtn disabled:cursor-not-allowed'
           >
-            Sign Uppp
+            Sign Up
           </button>
         </div>
       </div>
