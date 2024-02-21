@@ -31,17 +31,17 @@ export default function SignUp() {
       setFormError(error.message);
     }
     if (!error) {
-      const res = await fetch(`${location.origin}/api/auth/users`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data.user_email),
-      });
+      // const res = await fetch(`${location.origin}/api/auth/users`, {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify(data.user_email),
+      // });
 
-      const json = await res.json();
+      // const json = await res.json();
 
-      if (json.error) {
-        console.log(json.error);
-      }
+      // if (json.error) {
+      //   console.log(json.error);
+      // }
       router.push('/verify');
     }
   };
